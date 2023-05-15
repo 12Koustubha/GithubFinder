@@ -10,8 +10,8 @@ const Tabs = ({type,setType}) => {
           Repositories
         </button>
         <button
-          className={`${type === "received_events_url" && "text-teal-400"}`}
-          onClick={() => setType("received_events_url")}
+          className={`${type === "received_events" && "text-teal-400"}`}
+          onClick={() => setType("received_events")}
         >
           Activity
         </button>

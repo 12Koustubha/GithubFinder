@@ -14,6 +14,7 @@ const Users = () => {
         const res = await fetch(BaseURL);
         const data = await res.json();
         setUsers(data);
+      
         setLoading(null)
     }
   
@@ -25,6 +26,7 @@ const Users = () => {
       const res = await fetch(BaseURL + "/" + user.current.value);
       const data = await res.json();
       setUsers(() => [data]);
+      console.log(users);
       user.current.value = "";
     } else {
       AllUsers();
@@ -33,7 +35,8 @@ const Users = () => {
   };
   useEffect(() => {
     AllUsers();
-  }, [setUsers]);
+  }, [user,setUsers]);
+
   return (
     <div>
       <div className="flex justify-center items-center h-11 my-5">

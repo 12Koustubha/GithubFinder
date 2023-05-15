@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 const UsersContainer = ({ users }) => {
+  const condition = Array.isArray(users) && users.length > 0;
   return (
     <div className="flex gap-5 justify-center flex-wrap py-5">
-      {users &&
-        users.map(
+      {condition ? (
+        users?.map(
           (user, idx) =>
             user?.login && (
               // user?.login && (
@@ -19,19 +20,21 @@ const UsersContainer = ({ users }) => {
                 />
                 <h1 className="text-xl">{user?.login}</h1>
                 <h1 className="text-xs text-teal-400">{user?.name}</h1>
-                <Link to ={`${user?.login}`}>
-              
-                <span
-                  className="text-gray-200 bg-teal-600 my-3
+                <Link to={`${user?.login}`}>
+                  <span
+                    className="text-gray-200 bg-teal-600 my-3
                  font-semibold block py-1 px-4 rounded tracking-wideb"
-                >
-                  View
-                </span>
+                  >
+                    View
+                  </span>
                 </Link>
               </div>
             )
           // )
-        )}
+        )
+      ) : (
+        <div style={{ height: "300px", width: "300px" }}>No User</div>
+      )}
     </div>
   );
 };
